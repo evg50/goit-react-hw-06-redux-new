@@ -8,6 +8,7 @@ export const App = () => {
   // const [movieId, setMovieId] = useState(null);
   return (
     <>
+      <h1>hello</h1>
       <Toaster position="top-right" reverseOrder={false} />
     </>
   );
