@@ -1,3 +1,4 @@
+import { symbol } from 'prop-types';
 import { combineReducers } from 'redux';
 import { statusFilters } from './constants';
 
@@ -9,9 +10,50 @@ const tasksInitialState = [
   { id: 4, text: 'Build amazing apps', completed: false },
 ];
 
+const PhoneInitialState = [
+  { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+  { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+  { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+  { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+];
+
+const contactsReducer = (state = PhoneInitialState, action) => {
+  // console.log('start reducer');
+  switch (action.type) {
+    case 'contact/addContact':
+      console.log('start add');
+
+      return [...state, action.payload];
+    case 'contact/deleteContact':
+      console.log('delete contacts');
+      return state.filter(contact => contact.id !== action.payload);
+    default:
+      // console.log('default contacts');
+      return state;
+  }
+};
+const filterInitialState = {
+  filterValue: '',
+};
+
+const filterContacts = (state = filterInitialState, action) => {
+  // console.log('start reducer2');
+
+  switch (action.type) {
+    case 'filter/empty':
+      return state;
+    case 'filter/NoEmpty':
+      console.log(action.payload);
+      return state;
+    default:
+      return state;
+  }
+};
+
 const tasksReducer = (state = tasksInitialState, action) => {
   switch (action.type) {
     case 'tasks/addTask':
+      console.log('addTask');
       return [...state, action.payload];
     case 'tasks/deleteTask':
       return state.filter(task => task.id !== action.payload);
@@ -30,6 +72,7 @@ const tasksReducer = (state = tasksInitialState, action) => {
         return { ...task, completed: !task.completed }; // то которое мы нашли поменять у него свойство комплитед
       });
     default:
+      // console.log('defaul task');
       return state;
   }
 };
@@ -53,4 +96,6 @@ const filtersReducer = (state = filtersInitialState, action) => {
 export const rootReducer = combineReducers({
   tasks: tasksReducer,
   filters: filtersReducer,
+  contacts: contactsReducer,
+  filterContacts: filterContacts,
 });
