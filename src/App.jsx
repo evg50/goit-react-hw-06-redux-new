@@ -53,14 +53,13 @@ export default function App() {
     <div>
       <h1>PhoneBook</h1>
       <FormInputHooks onSubmit={formSubmit} />
-      <Filter value={filter} onChange={changeFilter} />
+      <Filter />
       <PhoneBook
         contactsList={visibleContacts}
         onDeleteContact={deleteContact}
       />
-      <TaskForm />
-      <TaskList />
+      {/* <TaskForm />  */}
+      {/* <TaskList /> */}
     </div>
   );
 }
-

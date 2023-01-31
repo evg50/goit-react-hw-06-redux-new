@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addContact } from '../redux/action';
+import { addContact } from '../redux/contactSlise';
 
 export default function FormInputHooks({ onSubmit }) {
   const [name, setName] = useState('');

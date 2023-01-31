@@ -1,6 +1,11 @@
-import { createStore } from 'redux';
-import { devToolsEnhancer } from '@redux-devtools/extension';
-import { rootReducer } from './reducer';
+// import { filtersReducer, tasksReducer } from './reducer';
+import { filterContactsReducer } from './filterContactSlice';
+import { contactsReducer } from './contactSlise';
+import { configureStore } from '@reduxjs/toolkit';
 
-const enhancer = devToolsEnhancer();
-export const store = createStore(rootReducer, enhancer);
+export const store = configureStore({
+  reducer: {
+    contacts: contactsReducer,
+    filterContacts: filterContactsReducer,
+  },
+});

@@ -4,4 +4,4 @@ export const getStatusFilter = state => state.filters.status;
 
 export const getContacts = state => state.contacts;
 
-export const getFilterValue = state => state.filterValue;
+export const getFilterValue = state => state.filterContacts;
